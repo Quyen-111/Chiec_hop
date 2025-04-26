@@ -1,0 +1,53 @@
+import java.time.LocalDate;
+abstract class Asset {
+    String name;
+    double value;
+    LocalDate acquisitionDate;
+    Asset (String name,double value,LocalDate acquisitionDate) {
+        this.name = name;
+        this.value = value;
+        this.acquisitionDate = acquisitionDate;
+    }
+    public abstract double getDepreciation();
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public double getValue() {
+        return value;
+    }
+    public void setValue(double value) {
+        this.value = value;
+    }
+    public LocalDate getAcquisitionDate() {
+        return acquisitionDate;
+    }
+    public void setAcquisitionDate(LocalDate acquisitionDate) {
+        this.acquisitionDate = acquisitionDate;
+    }
+}
+class FixedAsset extends Asset {
+    int usefulLife;
+
+    public FixedAsset(String name, double value, LocalDate acquisitionDate) {
+        super(name, value, acquisitionDate);
+    }
+    public double getDepreciation() {
+        return value / usefulLife;
+    }
+    public int getUsefulLife() {
+        return usefulLife;
+    }
+    public void setUsefulLife(int usefulLife) {
+        this.usefulLife = usefulLife;
+    }
+}
+class CurrentAsset extends Asset {
+    double liquidationValue;
+    getLiquidationValue() {
+        double getLiquidationValue = value * 0.1;
+        return getLiquidationValue;
+    }
+}
