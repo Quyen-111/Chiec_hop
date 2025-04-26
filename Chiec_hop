@@ -43,23 +43,30 @@ class BoxWithMaxWeight extends Box {
             items.add(item);
         }
     }
-        @Override
-        public boolean isInBox (Item item){
-            for (Item i: items) {
-                if (i.getName().equals(item.getName())) {
-                    return true;
-                }
-            } return false;
-        }
-        public static class Main {
-            public static void main(String[] args) {
-                BoxWithMaxWeight box = new BoxWithMaxWeight(10);
 
-                Item saludo = new Item("Saludo", 5);
-
-                box.add(saludo);
-                System.out.println("Is Saludo in the box? " + box.isInBox(new Item("Saludo")));
+    @Override
+    public boolean isInBox(Item item) {
+        for (Item i : items) {
+            if (i.getName().equals(item.getName())) {
+                return true;
             }
         }
+        return false;
     }
+}
+public class Main {
+    public static void main(String[] args) {
+        BoxWithMaxWeight box = new BoxWithMaxWeight(10);
 
+        Item saludo = new Item("Saludo", 5);
+        Item pirkka = new Item("Pirkka", 5);
+        Item kopiluwak = new Item("Kopi Luwak", 5);
+
+        box.add(saludo);
+        box.add(pirkka);
+        box.add(kopiluwak);
+        System.out.println(box.isInBox(new Item("Saludo")));
+        System.out.println(box.isInBox(new Item("Pirkka")));
+        System.out.println(box.isInBox(new Item("Kopi Luwak")));
+    }
+}
